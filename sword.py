@@ -137,8 +137,7 @@ def cmd_prep(options):
         dst = os.sep.join([workspace, repos["alias"]])
         if not os.path.exists(dst):
             process = subprocess.Popen(
-                ['git', 'clone', repos["url"], dst],
-                stderr=subprocess.PIPE
+                ['git', 'clone', repos["url"], dst]
             )
             out, err = process.communicate()
             if out:
