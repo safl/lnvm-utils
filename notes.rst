@@ -1,5 +1,11 @@
 lzop
 
+packages added to dragon::
+
+    keychain            # For managing ssh-keys with passphrase
+    libncurses5-dev     # For running menuconfig
+    htop                # It is a neat upgrade to `top`
+
 Kernel for host
 ===============
 
@@ -16,6 +22,10 @@ Install Linux 4.4.3::
 If you have conflicts with nvidia drivers, then install beta-drivers from ppa::
 
     sudo add-apt-repository ppa:graphics-drivers/ppa
+
+Custom kernel for host
+======================
+
 
 lnvm tool
 =========
@@ -58,23 +68,41 @@ clone::
     cd ~/Repos
     git clone https://github.com/OpenChannelSSD/linux.git
 
-Want to enable virtfs and OpenChannelSSD, so check that the following are in your ```.config```::
+Do a ``make menuconfig`` and save it, then enable options as appropriate.
 
+Config options::
+
+    # For NVMe support compiled into kernel (default is module)
+    CONFIG_BLK_DEV_NVME=y
     CONFIG_NVM=y
-    CONFIG_NVM_DEBUG=y          # Expose the /sys/module/lnvm/parameters/configure_debug interface
-    CONFIG_NVM_RRPC=y           # Hybrid target support (required to expose the open-channel SSD as a block device)
-    CONFIG_NVM_GENNVM=y         # generic media manager support (required)
-    CONFIG_BLK_DEV_NULL_BLK=y   # For null_blk support
-    CONFIG_BLK_DEV_NVME=y       # For NVMe support
+    # Expose the /sys/module/lnvm/parameters/configure_debug interface
+    CONFIG_NVM_DEBUG=y
+    # Generic media manager support (required)
+    CONFIG_NVM_GENNVM=y
+    # Hybrid target support (required to expose the open-channel SSD as a block device)
+    CONFIG_NVM_RRPC=y
 
-For mounting::
+Config options for ``liblnvm`` branch::
+
+    # Directflash / liblightnvm
+    CONFIG_NVM_DFLASH=y
+
+Config options for ``for-next`` branch::
+
+    # For null_blk support
+    CONFIG_BLK_DEV_NULL_BLK=y
+
+Config option for compiling network driver into kernel for qemu::
+
+    CONFIG_E1000=y 
+
+Config options for mounting virtual filesystem with qemu::
 
     CONFIG_NET_9P=y
     CONFIG_NET_9P_VIRTIO=y
+
     CONFIG_9P_FS=y
     CONFIG_9P_FS_POSIX_ACL=y
-    CONFIG_9P_FS_SECURITY=y
-
 
 fio
 ===
@@ -101,4 +129,16 @@ Boot the vm and then add these:
 git@github.com:OpenChannelSSD/liblightnvm.git:master
 git@github.com:MatiasBjorling/lightnvm-fio.git:lightnvm
 
+
+
+Debugging
+=========
+
+gdb vmlinux
+
+
+list *dflash_ioctl+0x2f2
+
+
+dflash_ioctl+0x2f2
 

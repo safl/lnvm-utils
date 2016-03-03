@@ -26,13 +26,13 @@ NVME_DEVICE="-device nvme,drive=mynvme,serial=deadbeef,namespaces=1,lver=1,nlbaf
 
 sudo $QEMU_BIN $MEM $SMP --enable-kvm $OS_DRIVE $OS_DEVICE $NVME_DRIVE $NVME_DEVICE \
 -kernel "$WORKSPACE/linux/arch/x86_64/boot/bzImage" \
--append "root=/dev/vda1 null_blk.gb=1 null_blk.use_lightnvm=1 console=ttyS0,kgdboc=ttyS1,115200 " \
-#-append "root=/dev/vda1 null_blk.gb=1 null_blk.use_lightnvm=1 vga=0 console=ttyS0,kgdboc=ttyS1,115200 " \
-#-serial mon:stdio \
-#-redir tcp:2022::22 \
-#-cpu host \
-#-serial pty \
-#-s \
-#-nographic \
-#-chardev socket,id=qmp,path=/tmp/test.qmp,server,nowait \
-#-mon chardev=qmp,mode=control
+-append "root=/dev/vda1 null_blk.gb=1 null_blk.use_lightnvm=1 vga=0 console=ttyS0,kgdboc=ttyS1,115200 " \
+-serial mon:stdio \
+-redir tcp:2022::22 \
+-cpu host \
+-serial pty \
+-s \
+-nographic \
+-chardev socket,id=qmp,path=/tmp/test.qmp,server,nowait \
+-mon chardev=qmp,mode=control \
+-virtfs local,path="$WORKSPACE",security_model=passthrough,id=host0,mount_tag=host0
