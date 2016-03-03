@@ -35,4 +35,5 @@ sudo $QEMU_BIN $MEM $SMP --enable-kvm $OS_DRIVE $OS_DEVICE $NVME_DRIVE $NVME_DEV
 -nographic \
 -chardev socket,id=qmp,path=/tmp/test.qmp,server,nowait \
 -mon chardev=qmp,mode=control \
--virtfs local,path="$WORKSPACE",security_model=passthrough,id=host0,mount_tag=host0
+-virtfs local,path="$WORKSPACE",security_model=passthrough,id=host0,mount_tag=host0 \
+-net user,hostfwd=tcp::10022-:22 -net nic
