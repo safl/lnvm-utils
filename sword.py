@@ -136,6 +136,7 @@ def cmd_prep(options):
     for repos in env["repos"]:                          # Clone repos
         dst = os.sep.join([workspace, repos["alias"]])
         if not os.path.exists(dst):
+            Msg.emph("Repos(%s) - cloning" % repos["alias"])
             process = subprocess.Popen(
                 ['git', 'clone', repos["url"], dst]
             )
@@ -145,6 +146,7 @@ def cmd_prep(options):
             if err:
                 Msg.fail(err)
 
+        Msg.emph("Repos(%s) - branching to '%s'" % (repos["alias"], repos["branch"]))
         process = subprocess.Popen(
             ['git', 'checkout', repos["branch"]],
             cwd=dst
