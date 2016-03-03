@@ -87,6 +87,11 @@ ENVS = [
             "alias": "fio",
             "url": "git@github.com:MatiasBjorling/lightnvm-fio.git",
             "branch": "lightnvm"
+        },
+        {
+            "alias": "lnvm",
+            "url": "git@github.com:OpenChannelSSD/lnvm.git",
+            "branch": "master"
         }
     ],
     "notes": "Repos and branches for experimenting with liblightnvm.",
@@ -113,6 +118,11 @@ ENVS = [
             "alias": "fio",
             "url": "git@github.com:MatiasBjorling/lightnvm-fio.git",
             "branch": "lightnvm"
+        },
+        {
+            "alias": "lnvm",
+            "url": "git@github.com:OpenChannelSSD/lnvm.git",
+            "branch": "master"
         }
     ],
     "notes": "Repos and branches for experimenting with liblightnvm.",
