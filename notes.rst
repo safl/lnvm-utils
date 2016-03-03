@@ -6,6 +6,17 @@ packages added to dragon::
     libncurses5-dev     # For running menuconfig
     htop                # It is a neat upgrade to `top`
 
+Custom kernel for host
+======================
+
+Compile it as installable package::
+
+    make deb-pkg -j$(nproc)
+
+Install it with::
+
+    ...
+
 Kernel for host
 ===============
 
@@ -23,9 +34,7 @@ If you have conflicts with nvidia drivers, then install beta-drivers from ppa::
 
     sudo add-apt-repository ppa:graphics-drivers/ppa
 
-Custom kernel for host
-======================
-
+...
 
 lnvm tool
 =========
@@ -59,6 +68,14 @@ clone, configure and install qemu-nvme::
     cd ~/Repos
     git clone https://github.com/OpenChannelSSD/qemu-nvme.git
     ./configure --enable-linux-aio --target-list=x86_64-softmmu --enable-kvm --enable-virtfs
+
+
+guest environment
+=================
+
+Add the following to ``/etc/fstab`` to automount shared folder::
+
+    host0 /home/safl/workspace 9p trans=virtio,version=9p2000.L 0 0
 
 Kernel for guest
 ================
@@ -107,11 +124,17 @@ Config options for mounting virtual filesystem with qemu::
 fio
 ===
 
-clone, configure::
+clone, configure, make, and make install::
 
     cd ~/Repos
     git clone git@github.com:MatiasBjorling/lightnvm-fio.git
     ./configure
+    make
+    sudo make install
+
+usage::
+
+    sudo fio lnvm/single.fio
 
 Play around with liblightnvm
 ============================
