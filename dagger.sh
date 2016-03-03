@@ -17,7 +17,7 @@ WORKSPACE="$HOME/sheath/workspace/liblnvm"
 
 QEMU_BIN="$WORKSPACE/qemu/x86_64-softmmu/qemu-system-x86_64"
 
-CPU="-cpu host"
+#CPU="-cpu host"    # This option might break with liblightnvm
 MEM="-m 16G"
 SMP="-smp 4"
 
