@@ -102,12 +102,7 @@ ENVS = [
         {
             "alias": "linux",
             "url": "git@github.com:OpenChannelSSD/linux.git",
-            "branch": "pblk"
-        },
-        {
-            "alias": "qemu",
-            "url": "git@github.com:OpenChannelSSD/qemu-nvme.git",
-            "branch": "wl_sim"
+            "branch": "pblk.2"
         },
         {
             "alias": "liblightnvm",
@@ -117,7 +112,7 @@ ENVS = [
         {
             "alias": "fio",
             "url": "git@github.com:MatiasBjorling/lightnvm-fio.git",
-            "branch": "lightnvm"
+            "branch": "master"
         },
         {
             "alias": "lnvm",
@@ -125,8 +120,8 @@ ENVS = [
             "branch": "master"
         }
     ],
-    "notes": "Repos and branches for experimenting with liblightnvm.",
-    "name": "pblock"
+    "notes": "Repos and branches for running with the card on dragon.",
+    "name": "dragon"
 },
 {
     "repos": [
