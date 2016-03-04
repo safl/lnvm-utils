@@ -6,12 +6,31 @@ packages added to dragon::
     libncurses5-dev     # For running menuconfig
     htop                # It is a neat upgrade to `top`
 
+gitlab runner on dragon
+=======================
+
+Done these things for the gitlab-ci runner::
+
+    # Add the ci user
+    sudo adduser ci
+    sudo usermod -a -G sudo ci
+
+    # Install runner
+    sudo curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.deb.sh | sudo bash
+    sudo apt-get install gitlab-ci-multi-runner
+
+Hmmm it installed its own user 'gitlab-runner'. Register the runner::
+
+    sudo gitlab-ci-multi-runner register
+    # ... registered as a shell runner
+    
+
 Custom kernel for host
 ======================
 
 Compile it as installable package::
 
-    make deb-pkg -j$(nproc)
+    sudo make deb-pkg -j$(nproc)
 
 Install it with::
 

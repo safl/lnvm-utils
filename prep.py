@@ -2,6 +2,7 @@
 from pprint import pprint
 import subprocess
 import argparse
+import json
 import os
 
 class Msg(object):
@@ -65,100 +66,6 @@ def prompt(msg=None):
 
     return confirmed, confirmed_all
 
-ENVS = [
-{
-    "repos": [
-        {
-            "alias": "linux",
-            "url": "git@github.com:OpenChannelSSD/linux.git",
-            "branch": "liblnvm"
-        },
-        {
-            "alias": "qemu",
-            "url": "git@github.com:OpenChannelSSD/qemu-nvme.git",
-            "branch": "liblnvm"
-        },
-        {
-            "alias": "liblightnvm",
-            "url": "git@github.com:OpenChannelSSD/liblightnvm.git",
-            "branch": "master"
-        },
-        {
-            "alias": "fio",
-            "url": "git@github.com:MatiasBjorling/lightnvm-fio.git",
-            "branch": "lightnvm"
-        },
-        {
-            "alias": "lnvm",
-            "url": "git@github.com:OpenChannelSSD/lnvm.git",
-            "branch": "master"
-        }
-    ],
-    "notes": "Repos and branches for experimenting with liblightnvm.",
-    "name": "liblnvm"
-},
-{
-    "repos": [
-        {
-            "alias": "linux",
-            "url": "git@github.com:OpenChannelSSD/linux.git",
-            "branch": "pblk.2"
-        },
-        {
-            "alias": "liblightnvm",
-            "url": "git@github.com:OpenChannelSSD/liblightnvm.git",
-            "branch": "master"
-        },
-        {
-            "alias": "fio",
-            "url": "git@github.com:MatiasBjorling/lightnvm-fio.git",
-            "branch": "master"
-        },
-        {
-            "alias": "lnvm",
-            "url": "git@github.com:OpenChannelSSD/lnvm.git",
-            "branch": "master"
-        }
-    ],
-    "notes": "Repos and branches for running with the card on dragon.",
-    "name": "dragon"
-},
-{
-    "repos": [
-        {
-            "alias": "linux",
-            "url": "git@github.com:OpenChannelSSD/linux.git",
-            "branch": "for-4.6/lightnvm"
-        },
-        {
-            "alias": "qemu",
-            "url": "git@github.com:OpenChannelSSD/qemu-nvme.git",
-            "branch": "master"
-        },
-        {
-            "alias": "liblightnvm",
-            "url": "git@github.com:OpenChannelSSD/liblightnvm.git",
-            "branch": "master"
-        },
-        {
-            "alias": "fio",
-            "url": "git@github.com:MatiasBjorling/lightnvm-fio.git",
-            "branch": "lightnvm"
-        },
-        {
-            "alias": "lnvm",
-            "url": "git@github.com:OpenChannelSSD/lnvm.git",
-            "branch": "master"
-        }
-    ],
-    "notes": "Repos and branches for experimenting with liblightnvm.",
-    "name": "mat"
-},
-
-]
-
-DEFAULT_ENV = ENVS[0]
-
 def cmd_prep(options):
     """Setup workspace: clone repos and switch branch."""
 
@@ -196,6 +103,9 @@ def cmd_prep(options):
 
 def main():
 
+    ENVS = json.load(open('envs.json'))     # Grab environments
+    DEFAULT_ENV = ENVS[0]
+
     parser = argparse.ArgumentParser(description='Environment setup and invocation')
     parser.add_argument(
         'name',
@@ -216,6 +126,8 @@ def main():
         "env": [env for env in ENVS if env["name"] == args.name][0]
     }
     cmd_prep(options)
+
+    json.dump(ENVS, open('envs.json', 'w'), indent=2)
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,90 @@
+[
+  {
+    "repos": [
+      {
+        "url": "git@github.com:OpenChannelSSD/linux.git", 
+        "alias": "linux", 
+        "branch": "liblnvm"
+      }, 
+      {
+        "url": "git@github.com:OpenChannelSSD/qemu-nvme.git", 
+        "alias": "qemu", 
+        "branch": "liblnvm"
+      }, 
+      {
+        "url": "git@github.com:OpenChannelSSD/liblightnvm.git", 
+        "alias": "liblightnvm", 
+        "branch": "master"
+      }, 
+      {
+        "url": "git@github.com:MatiasBjorling/lightnvm-fio.git", 
+        "alias": "fio", 
+        "branch": "lightnvm"
+      }, 
+      {
+        "url": "git@github.com:OpenChannelSSD/lnvm.git", 
+        "alias": "lnvm", 
+        "branch": "master"
+      }
+    ], 
+    "notes": "Repos and branches for experimenting with liblightnvm.", 
+    "name": "liblnvm"
+  }, 
+  {
+    "repos": [
+      {
+        "url": "git@github.com:OpenChannelSSD/linux.git", 
+        "alias": "linux", 
+        "branch": "pblk.2"
+      }, 
+      {
+        "url": "git@github.com:OpenChannelSSD/liblightnvm.git", 
+        "alias": "liblightnvm", 
+        "branch": "master"
+      }, 
+      {
+        "url": "git@github.com:MatiasBjorling/lightnvm-fio.git", 
+        "alias": "fio", 
+        "branch": "master"
+      }, 
+      {
+        "url": "git@github.com:OpenChannelSSD/lnvm.git", 
+        "alias": "lnvm", 
+        "branch": "master"
+      }
+    ], 
+    "notes": "Repos and branches for running with the card on dragon.", 
+    "name": "dragon"
+  }, 
+  {
+    "repos": [
+      {
+        "url": "git@github.com:OpenChannelSSD/linux.git", 
+        "alias": "linux", 
+        "branch": "for-4.6/lightnvm"
+      }, 
+      {
+        "url": "git@github.com:OpenChannelSSD/qemu-nvme.git", 
+        "alias": "qemu", 
+        "branch": "master"
+      }, 
+      {
+        "url": "git@github.com:OpenChannelSSD/liblightnvm.git", 
+        "alias": "liblightnvm", 
+        "branch": "master"
+      }, 
+      {
+        "url": "git@github.com:MatiasBjorling/lightnvm-fio.git", 
+        "alias": "fio", 
+        "branch": "lightnvm"
+      }, 
+      {
+        "url": "git@github.com:OpenChannelSSD/lnvm.git", 
+        "alias": "lnvm", 
+        "branch": "master"
+      }
+    ], 
+    "notes": "Repos and branches for experimenting with liblightnvm.", 
+    "name": "mat"
+  }
+]
