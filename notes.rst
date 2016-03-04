@@ -77,6 +77,19 @@ Add the following to ``/etc/fstab`` to automount shared folder::
 
     host0 /home/safl/workspace 9p trans=virtio,version=9p2000.L 0 0
 
+Allow reboot and power off without password, behold the XML of system.d::
+
+    sudo vim /usr/share/polkit-1/actions/org.freedesktop.login1.policy
+
+Autologin::
+
+    ... using ssh login with keys instead ...
+    mkdir ~/.ssh on guest
+    scp public key to guest
+    cat public key > ~/.ssh/authorized_keys
+
+.
+
 Kernel for guest
 ================
 
@@ -153,15 +166,12 @@ git@github.com:OpenChannelSSD/liblightnvm.git:master
 git@github.com:MatiasBjorling/lightnvm-fio.git:lightnvm
 
 
-
 Debugging
 =========
 
 gdb vmlinux
 
-
 list *dflash_ioctl+0x2f2
-
 
 dflash_ioctl+0x2f2
 

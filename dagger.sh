@@ -13,7 +13,7 @@
 # And the flag: -s
 # And some from append: null_blk.nr_devices=1 null_blk.submit_queues=1 null_blk.queue_mode=2 null_blk.lightnvm_enable=1 null_blk.gb=2 null_blk.bs=4096 null_blk.lightnvm_num_channels=1
 
-WORKSPACE="$HOME/sheath/workspace/liblnvm"
+WORKSPACE="$HOME/sheath/workspace/mat"
 
 QEMU_BIN="$WORKSPACE/qemu/x86_64-softmmu/qemu-system-x86_64"
 

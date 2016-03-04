@@ -127,7 +127,39 @@ ENVS = [
     ],
     "notes": "Repos and branches for experimenting with liblightnvm.",
     "name": "pblock"
-}
+},
+{
+    "repos": [
+        {
+            "alias": "linux",
+            "url": "git@github.com:OpenChannelSSD/linux.git",
+            "branch": "for-4.6/lightnvm"
+        },
+        {
+            "alias": "qemu",
+            "url": "git@github.com:OpenChannelSSD/qemu-nvme.git",
+            "branch": "master"
+        },
+        {
+            "alias": "liblightnvm",
+            "url": "git@github.com:OpenChannelSSD/liblightnvm.git",
+            "branch": "master"
+        },
+        {
+            "alias": "fio",
+            "url": "git@github.com:MatiasBjorling/lightnvm-fio.git",
+            "branch": "lightnvm"
+        },
+        {
+            "alias": "lnvm",
+            "url": "git@github.com:OpenChannelSSD/lnvm.git",
+            "branch": "master"
+        }
+    ],
+    "notes": "Repos and branches for experimenting with liblightnvm.",
+    "name": "mat"
+},
+
 ]
 
 DEFAULT_ENV = ENVS[0]
